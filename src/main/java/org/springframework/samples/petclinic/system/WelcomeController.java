@@ -28,8 +28,8 @@ class WelcomeController {
         return "welcome";
     }
 
-    @GetMapping("/newMethod")
+    @GetMapping("/modifiedMethod")
     public String newMethod() {
-        return "New Method has been added";
+        return "Method has been modified";
     }
 }
