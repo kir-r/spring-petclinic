@@ -27,4 +27,9 @@ class WelcomeController {
     public String welcome() {
         return "welcome";
     }
+
+    @GetMapping("/newMethod")
+    public String newMethod() {
+        return "New Method has been added";
+    }
 }
