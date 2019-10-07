@@ -45,14 +45,4 @@ class VetController {
         model.put("vets", vets);
         return "vets/vetList";
     }
-
-    @GetMapping({ "/vets" })
-    public @ResponseBody Vets showResourcesVetList() {
-        // Here we are returning an object of type 'Vets' rather than a collection of Vet
-        // objects so it is simpler for JSon/Object mapping
-        Vets vets = new Vets();
-        vets.getVetList().addAll(this.vets.findAll());
-        return vets;
-    }
-
 }
