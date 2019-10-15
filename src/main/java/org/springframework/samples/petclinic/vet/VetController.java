@@ -55,4 +55,9 @@ class VetController {
         return vets;
     }
 
+    @GetMapping("/newMethod2")
+    public String drillWc() {
+        return "New method 2 has been add to VetController class";
+    }
+
 }

@@ -25,6 +25,11 @@ class WelcomeController {
 
     @GetMapping("/")
     public String welcome() {
-        return "welcome";
+        return "welcome to Drill Petclinic";
+    }
+
+    @GetMapping("/newMethod1")
+    public String drillWc() {
+        return "New method 1 has been add to WelcomeController class";
     }
 }
