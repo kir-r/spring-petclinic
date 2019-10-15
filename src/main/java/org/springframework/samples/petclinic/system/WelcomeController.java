@@ -29,7 +29,7 @@ class WelcomeController {
     }
 
     @GetMapping("/newMethod1")
-    public String drillWc() {
+    public String newMethod1() {
         return "New method 1 has been add to WelcomeController class";
     }
 }

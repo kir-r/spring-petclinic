@@ -26,6 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import org.assertj.core.util.Lists;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,6 +75,7 @@ public class VetControllerTests {
             .andExpect(view().name("vets/vetList"));
     }
 
+    @Ignore
     @Test
     public void testShowResourcesVetList() throws Exception {
         ResultActions actions = mockMvc.perform(get("/vets")
