@@ -128,6 +128,7 @@ class OwnerController {
     public ModelAndView showOwner(@PathVariable("ownerId") int ownerId) {
         ModelAndView mav = new ModelAndView("owners/ownerDetails");
         mav.addObject(this.owners.findById(ownerId));
+        System.out.println("Modified method for 0.6.0");
         return mav;
     }
 
