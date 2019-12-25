@@ -17,8 +17,15 @@ package org.springframework.samples.petclinic.vet;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.supercsv.io.CsvBeanWriter;
+import org.supercsv.io.ICsvBeanWriter;
+import org.supercsv.prefs.CsvPreference;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -46,13 +53,34 @@ class VetController {
         return "vets/vetList";
     }
 
-    @GetMapping({ "/vets" })
-    public @ResponseBody Vets showResourcesVetList() {
+    @GetMapping({"/vets"})
+    public @ResponseBody
+    Vets showResourcesVetList() {
         // Here we are returning an object of type 'Vets' rather than a collection of Vet
         // objects so it is simpler for JSon/Object mapping
         Vets vets = new Vets();
         vets.getVetList().addAll(this.vets.findAll());
         return vets;
+    }
+
+    @RequestMapping(value = "/vetsCSV")
+    public void downloadCSV(HttpServletResponse response) throws IOException {
+        String csvFileName = "vets.csv";
+        response.setContentType("text/csv");
+        String headerKey = "Content-Disposition";
+        String headerValue = String.format("attachment; filename=\"%s\"", csvFileName);
+        response.setHeader(headerKey, headerValue);
+        Vets vets = new Vets();
+        vets.getVetList().addAll(this.vets.findAll());
+        List<Vet> vetsList = vets.getVetList();
+        ICsvBeanWriter csvWriter = new CsvBeanWriter(response.getWriter(),
+            CsvPreference.STANDARD_PREFERENCE);
+        String[] header = {"firstName", "lastName", "specialties"};
+        csvWriter.writeHeader(header);
+        for (Vet vet : vetsList) {
+            csvWriter.write(vet, header);
+        }
+        csvWriter.close();
     }
 
 }
