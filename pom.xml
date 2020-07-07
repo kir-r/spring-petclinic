@@ -108,6 +108,15 @@
       <artifactId>spring-boot-devtools</artifactId>
       <optional>true</optional>
     </dependency>
+
+     <!-- fat jar -->
+      <dependency>
+          <groupId>org.springframework.samples.petclinic</groupId>
+          <artifactId>fatJar</artifactId>
+          <version>0.1.0</version>
+          <scope>system</scope>
+          <systemPath>${project.basedir}/src/main/resources/classes.jar</systemPath>
+      </dependency>
   </dependencies>
 
   <build>
