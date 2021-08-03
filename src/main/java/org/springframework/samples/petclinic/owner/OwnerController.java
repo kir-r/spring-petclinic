@@ -90,6 +90,11 @@ class OwnerController {
             return "owners/findOwners";
         } else if (results.size() == 1) {
             // 1 owner found
+            System.out.println("- Downloader started");
+            System.out.println("- Downloader started");
+            System.out.println("- Downloader started");
+            System.out.println("- Downloader started");
+            System.out.println("- Downloader started");
             owner = results.iterator().next();
             return "redirect:/owners/" + owner.getId();
         } else {
