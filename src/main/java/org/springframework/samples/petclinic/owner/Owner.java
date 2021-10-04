@@ -99,7 +99,7 @@ public class Owner extends Person {
     public List<Pet> getPets() {
         List<Pet> sortedPets = new ArrayList<>(getPetsInternal());
         PropertyComparator.sort(sortedPets,
-                new MutableSortDefinition("name", true, true));
+            new MutableSortDefinition("name", true, true));
         return Collections.unmodifiableList(sortedPets);
     }
 
@@ -127,17 +127,14 @@ public class Owner extends Person {
      * @return true if pet name is already in use
      */
     public Pet getPet(String name, boolean ignoreNew) {
-        name = name.toLowerCase();
-        for (Pet pet : getPetsInternal()) {
-            if (!ignoreNew || !pet.isNew()) {
+        String nameInLowerCase = name.toLowerCase();
+        Pet result = getPetsInternal().stream().filter(pet -> {
                 String compName = pet.getName();
                 compName = compName.toLowerCase();
-                if (compName.equals(name)) {
-                    return pet;
-                }
+                return !ignoreNew || !pet.isNew() && compName.equals(nameInLowerCase);
             }
-        }
-        return null;
+        ).findAny().orElse(null);
+        return result;
     }
 
     @Override

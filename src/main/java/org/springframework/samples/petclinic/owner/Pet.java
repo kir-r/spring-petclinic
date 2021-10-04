@@ -108,6 +108,9 @@ public class Pet extends NamedEntity {
 
     public void addVisit(Visit visit) {
         getVisitsInternal().add(visit);
+        if (visit.getInstructions() == null || visit.getInstructions().isEmpty()) {
+            visit.setInstructions("There are no doctor's orders.");
+        }
         visit.setPetId(this.getId());
     }
 
