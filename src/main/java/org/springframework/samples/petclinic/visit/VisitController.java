@@ -13,8 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.samples.petclinic.owner;
+package org.springframework.samples.petclinic.visit;
 
+import org.springframework.samples.petclinic.owner.Pet;
+import org.springframework.samples.petclinic.owner.PetRepository;
 import org.springframework.samples.petclinic.visit.Visit;
 import org.springframework.samples.petclinic.visit.VisitRepository;
 import org.springframework.stereotype.Controller;
@@ -33,7 +35,7 @@ import java.util.Map;
  * @author Dave Syer
  */
 @Controller
-class VisitController {
+public class VisitController {
 
     private final VisitRepository visits;
     private final PetRepository pets;

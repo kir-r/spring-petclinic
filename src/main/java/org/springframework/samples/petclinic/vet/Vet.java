@@ -20,6 +20,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -62,9 +63,10 @@ public class Vet extends Person {
 
     @XmlElement
     public List<Specialty> getSpecialties() {
-        List<Specialty> sortedSpecs = new ArrayList<>(getSpecialtiesInternal());
-        PropertyComparator.sort(sortedSpecs,
-                new MutableSortDefinition("name", true, true));
+        List<Specialty> specs = new ArrayList<>(getSpecialtiesInternal());
+        List<Specialty> sortedSpecs = specs.stream().sorted((spec1, spec2) ->
+            spec1.getName().compareToIgnoreCase(spec2.getName())
+        ).collect(Collectors.toList());
         return Collections.unmodifiableList(sortedSpecs);
     }
 
