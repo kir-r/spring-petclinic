@@ -39,6 +39,9 @@ Then choose basic-constructions-controller and required method, follow instructi
 ## In case you find a bug/suggested improvement for Spring Petclinic
 Our issue tracker is available here: https://github.com/spring-projects/spring-petclinic/issues
 
+##WebSockets
+To use WebSocket use browser WebSocket Client extension. 
+Start the app, start browser client and use the address: ws://localhost:8080/name
 
 ## Database configuration
 

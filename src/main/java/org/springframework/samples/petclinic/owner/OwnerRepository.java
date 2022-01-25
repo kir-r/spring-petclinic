@@ -32,6 +32,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Sam Brannen
  * @author Michael Isvy
  */
+@org.springframework.stereotype.Repository
 public interface OwnerRepository extends Repository<Owner, Integer> {
 
     /**
